@@ -146,4 +146,11 @@ Style
 (In progress - notes)
 - 2 space indentation
 - Comments are a smell
-- Camels for Classes, Snakes Everywhere Else
+- Camels for Classes, Snakes Everywhere Else. Constants there is devision on (camelcase or uppercase snake)
+- Generally Rubyists use parenthesis on arity1+ methods. Don't use parenthesis on arity0 methods. No parenthesis on if statements etc.
+- Blocks - if it's small, fold into a line and use parenthesis. Multi statement use multiple lines do/end.
+
+TODO
+====
+- Rebase history and force push 
+- Discuss parenthesis style preference for arity0/1 methods. Also Arity 2+ methods DON'T require parenthesis
