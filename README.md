@@ -111,14 +111,22 @@ Getting Functional
 puts("The arity1 method param is: #{param}")
 end```
 
-Then let's take a second method that takes an arity 1 method and calls that method with a parameter:
+Now let's take a second method that has a parameter of the Method object type - the method object has a call parameter that will execute the method.
 
 ```def funky_method_executor(funky_method)
 funky_method.call("FUNKY") 
 end```
 
-In the above you can see we are passing in an object like any other. We expect it to have a call method. The call method is equivalent to calling a function directly and is used to invoke a method that is being used as an object.
-Now let's try to compose the methods so we are passing the method arity1 into funky_method_executor as its parameter.
+In the above you can see we are passing in the Method object like any other. 
+Now let's try to compose the methods so we are passing the method arity1 into funky_method_executor as its parameter. In order to do this, we have to use `method` to aquire the method object for the method. 
 
 ```funky_method_executor(method(:arity1))
 ```
+Now that we called the method `method` to get the method object we needed to use as an argument. The `:` infront of the method name is used in ruby to represent a symbol - remember almost everything is an expression in Ruby so if you don't use the colon, ruby will try to execute the method instead of passing the method in. Because the method requires a parameter, this will cause an exception to occur like so:
+
+```irb(main):035:0> funky_method_executor(method(arity1))
+ArgumentError: wrong number of arguments (0 for 1)
+	from (irb):20:in `arity1'
+	from (irb):35
+	from /usr/bin/irb:12:in `<main>'```
+	
