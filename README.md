@@ -78,7 +78,9 @@ And if we evoke it, we can expect that expression to be evaluated as any other r
 Hello 3
 => nil```
 
-With Ruby's dynamic typing, other types can be passed in to the method still with no ill effect:
+Note that there is an implicit conversion happening there to change the numeric data type into a string to print. You don't have to worry too much about the types which is the double-edged sword that comes with more dynamically typed languages. 
+
+With Ruby's dynamic typing, other types can be passed in to the method still with no ill effect. Strings would be an obvious choice to try in this case:
 
 ```irb(main):036:0> h("Jason", "Goodwin")
 Hello JasonGoodwin
@@ -88,3 +90,29 @@ Here we are demonstrating string contatenation. To demonstrate the expression th
 
 ```irb(main):037:0> "Jason"+"Goodwin"
 => "JasonGoodwin"```
+
+Making Parameters Optional
+==========================
+Now that we've looked at methods a bit, lets look at how me might start defining an API with optional fields. Lets have our method h print a name and an optional last name. Because Smith is the most common last name in Australia, I can make an assumption that a last name is Smith if it's not provided so let's go with that:
+
+```def h(first, last = "Smith")
+puts("Hello #{first} #{last}")
+end```
+
+Now if we're desigining a name printing API to open source and share with the world, we can make last name optional and make a reasonably safe assumption that a person's last name is "Smith"! We are already making the world a better place.
+
+Functions as Objects
+====================
+Ruby has functions as first class objects meaning that functions can be defined and then passed around. For example, we'll define this function that prints its paramter first, similar to what we have already done several times:
+
+```def arity1(param)
+puts("The arity1 method param is: #{param}")
+end```
+
+Then let's take a method that takes an arity 1 method and calls that method with a parameter:
+
+```def funkyMethodExecutor(method)
+method("FUNKY") 
+end```
+
+Now let's try it out to see if we did indeed compose with a method as a parameter.
