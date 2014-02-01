@@ -53,7 +53,7 @@ Hello world
 
 Dynamic Typing
 ==============
-Ruby is a dynamically typed language and allows mutability so it tends to be used in a very imperative style. It is worth noting that you should always try to prefer immutability but we will demonstrate changing out method `h` to take your name as a parameter and say hello to it/him/her.
+Ruby's type system is dynamically typed and strongly typed. What this means is that Ruby will not check type compatability at compile time so you can assign an int to a value that was created as a string. It is still strongly typed object-oriented language meaning that there ARE types in the language - a string is a string and a number is a number so you can't add "3" and 3 without converting the string into a numeric type unlike perl which can allow you to treat strings and numbers interchangably. It's probably worth noting that the terms ('dynamically typed/statically typed' and 'weakly typed/strongly typed') do not have precise definitions but are still useful concepts for describing a language's stance on typing.   
 
 ```def h(name)
 puts "Hello #{name}"
@@ -101,18 +101,24 @@ end```
 
 Now if we're desigining a name printing API to open source and share with the world, we can make last name optional and make a reasonably safe assumption that a person's last name is "Smith"! We are already making the world a better place.
 
-Functions as Objects
-====================
-Ruby has functions as first class objects meaning that functions can be defined and then passed around. For example, we'll define this function that prints its paramter first, similar to what we have already done several times:
+Getting Functional
+==================
+ Ruby is a multi-paradigm language and does have many functional characteristics. Functions are first class citizens meaning that functions can be treated like other variables and be passed into other functions. For the below example, we will demonstrate this by defining a function and passing it into a second function and then it will be invoked. There are a couple ways to demonstrate this - in this case we will use what is referred to as a method object. 
+ 
+ First, let's define an arity1 function that we will pass as a variable later later:
 
 ```def arity1(param)
 puts("The arity1 method param is: #{param}")
 end```
 
-Then let's take a method that takes an arity 1 method and calls that method with a parameter:
+Then let's take a second method that takes an arity 1 method and calls that method with a parameter:
 
-```def funkyMethodExecutor(method)
-method("FUNKY") 
+```def funky_method_executor(funky_method)
+funky_method.call("FUNKY") 
 end```
 
-Now let's try it out to see if we did indeed compose with a method as a parameter.
+In the above you can see we are passing in an object like any other. We expect it to have a call method. The call method is equivalent to calling a function directly and is used to invoke a method that is being used as an object.
+Now let's try to compose the methods so we are passing the method arity1 into funky_method_executor as its parameter.
+
+```funky_method_executor(method(:arity1))
+```
