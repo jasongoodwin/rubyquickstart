@@ -129,4 +129,9 @@ ArgumentError: wrong number of arguments (0 for 1)
 	from (irb):20:in `arity1'
 	from (irb):35
 	from /usr/bin/irb:12:in `<main>'```
-	
+
+Getting Object Oriented
+=======================
+Ruby land is a world full of nouns - it is a pure Object Oriented language meaning that everything in Ruby is an object. This allows us to draw on all of the world's learnings on object oriented programming including subjects such as design patterns and refactoring definitions as described by Martin Fowler in his book on Refactoring. In fact, there is a 'port' of refactoring for Ruby (see: http://www.amazon.com/Refactoring-Edition-Addison-Wesley-Professional-Series/dp/0321984137)
+
+While Ruby is a pure object oriented language, there is a fairly strong deviation in how OO 'works' due to the dynamic type. Compared to, say, Java, there is no 'interface' in the language because types are never checked (i.e. no type-safety). Instead, object oriented languages with dynamic type systems talk about 'duck typing' which means that, instead of interfaces, objects use methods and arguments to determine valid semantics (citation: http://en.wikipedia.org/wiki/Duck_typing). In the end, this does mean that you will tend to lean more on tests than the compiler to ensure correctness in code. Refactoring cannot be done with confidence without good testing in place first.
