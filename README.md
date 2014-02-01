@@ -149,6 +149,9 @@ Style
 - Camels for Classes, Snakes Everywhere Else. Constants there is devision on (camelcase or uppercase snake)
 - Generally Rubyists use parenthesis on arity1+ methods. Don't use parenthesis on arity0 methods. No parenthesis on if statements etc.
 - Blocks - if it's small, fold into a line and use parenthesis. Multi statement use multiple lines do/end.
+- Method names - yes/no end a function with ?. Side effects end with a !
+- Use until and unless for control structures
+- Use each instead of for
 
 TODO
 ====
